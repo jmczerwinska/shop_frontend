@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Make-up Magic Magazyn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/4338054ecb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <nav>
+            <ul class="menu">
+                <a href="index.html">
+                    <li class="menu-el">Sklep</li>
+                </a>
+                <a href="#">
+                    <li class="menu-el">Magazyn</li>
+                </a>
+            </ul>
+        </nav>
+        <div class="management">
+            <a id="management">
+                <h2>Zarządzanie produktami</h2>
+            </a>
+
+
+            <div class="add-product">
+                <h4>Dodaj nowy produkt <i class="fas fa-chevron-circle-down"></i></h4>
+                <form>
+                    <label>ID:<input type='number' class="input" id="add-id" placeholder="Id number"></label>
+                    <label>Nazwa:<input type="text" class="input" id="add-name" placeholder="Name"></label>
+                    <label>Opis:<input type="text" class="input" id="add-descript" placeholder="Description"></label>
+                    <label>Cena:<input type="number" class="input" id="add-price" placeholder="Price"></label>
+                    <label>Ilość:<input type="number" class="input" id="add-count" placeholder="Count"></label>
+                    <button class="m-bttn" id="add-bttn" disabled="disabled">Dodaj</button>
+                </form>                
+            </div>
+
+            <div class="change-product">
+                <h4>Aktualizuj produkt</h4>
+                <form>
+                    <label>ID:<input type='number' class="input" id="update-id" placeholder="Id number"></label>
+                    <label>Nazwa:<input type="text" class="input" id="update-name" placeholder="Name"></label>
+                    <label>Opis:<input type="text" class="input" id="update-descript" placeholder="Description"></label>
+                    <label>Cena:<input type="number" class="input" id="update-price" placeholder="Price"></label>
+                    <label>Ilość:<input type="number" class="input" id="update-count" placeholder="Count"></label>
+                    <button class="m-bttn" id="update-bttn" disabled="disabled">Aktualizuj</button>
+                </form>                
+            </div>
+
+            <div class="delete-product">
+                <h4>Usuń product</h4>
+                <form>
+                    <label>ID:<input type='number' class="input" id="delete-id" placeholder="Id number"></label>
+                    <button class="m-bttn" id="delete-bttn" disabled="disabled">Usuń z magazynu</button>
+                </form>
+            </div>
+
+            <div class="storage"></div>
+                <h4>Produkty w magazynie</h4>
+                <table class="storage-table">
+                    <thead class="storage-table-head">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                            <th>Ilość</th>
+                            <th>Cena</th>
+                            <th>Aktualizuj</th>
+                            <th>Usuń</th>
+                        </tr>
+                    </thead>
+                    <tbody class="storage-table-body" ></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="script2.js"></script>
+</body>
+
+</html>

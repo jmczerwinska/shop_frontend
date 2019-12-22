@@ -1,0 +1,22 @@
+{
+  "name": "e-shop",
+  "version": "1.0.0",
+  "description": "e-shop frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joanna Czerwińska <czerwinska.jm@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.13.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "gulp-babel": "^8.0.0-beta.2"
+  }
+}
