@@ -12,7 +12,6 @@ class Api {
             throw response.status;
         }
         return response.json()
-            .catch(this._handleError.bind(this));
     }
 
     _handleError (error) {
@@ -44,7 +43,8 @@ class Api {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: this.headers
-            }).then(this._handleResponse);
+            }).then(this._handleResponse)
+            .catch(this._handleError);
     }
 
     _put (path, data) {
@@ -53,21 +53,21 @@ class Api {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: this.headers
-        }).then(this._handleResponse);
+        }).then(this._handleResponse).catch(this._handleError);
     }
 
     _get (path) {
         const url = this.url + path;
         return fetch(url, {
             method: 'GET'
-        }).then(this._handleResponse);
+        }).then(this._handleResponse).catch(this._handleError);
     }
     
     _delete (path) {
         const url = this.url + path;
         return fetch(url, {
             method: 'DELETE'
-        }).then(this._handleResponse);
+        }).then(this._handleResponse).catch(this._handleError);
     }
 
     addProduct  (id, data) {

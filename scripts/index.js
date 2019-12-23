@@ -1,39 +1,19 @@
-import Api from './api';
+import Api from './api.js';
+import Offer from  './offer.js';
+import Cart from './cart.js';
 
 class Shop {
-    
-    
+    constructor(){
+        this.api = new Api();
+        this.offer = new Offer();
+        this.cart = new Cart();    
+    }
 
-
-}
-
-class Offer {
-    offer = document.querySelector('.offer');
-
-    getProperty (data, property){
-        const itemProperty = document.createElement('div');
-        itemProperty.textContent = data['data'][property]
+    getOffer (data) {
+       this.api.getAll().then(res => this.offer.showOffer(res));
     }
 }
 
-
-class Cart {
-    cart = document.querySelector('.cart');
-    showCartBttn = document.querySelector('#show-cart');
-    closeCartBttn = document.querySelector('#close-cart');
-    buyBttn = document.querySelector('#buy-bttn');
-    cartTableBd = document.querySelector('.cart-table-body');
-    emptyCart = document.querySelector('.empty-cart');
-    fullCart = document.querySelector('.full-cart');
-}
-
-const api = new Api();
 const shop = new Shop();
 
-api.getAll().then(resp => shop.viewOffer(resp));
-
-document.addEventListener("DOMContentLoaded", function() {
-    shop.showCartBttn.addEventListener('click', () => shop.cart.style.display = 'block');
-    shop.closeCartBttn.addEventListener('click', () => shop.cart.style.display = 'none');
-    shop.buyBttn.addEventListener('click', shop.handleBuyBttn.bind(shop));
-});
+shop.getOffer();
