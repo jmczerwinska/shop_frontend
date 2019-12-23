@@ -1,0 +1,56 @@
+body {
+    margin:0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    nav {
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;   
+        ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+        }
+        
+    }
+    .hero-image {
+        height: 250px;
+    }
+    .shop {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        .offer {
+            margin-top: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: stretch;
+            .item {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 15px;
+                max-width: 220px;
+                .count {
+                    width: 25px;
+                }
+            }
+        }
+        .cart {
+            padding-top: 40px;
+            display: none;
+            width: 40%;
+            min-width: 300px;
+        }
+    }
+}
