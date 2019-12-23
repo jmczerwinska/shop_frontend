@@ -47,7 +47,7 @@ class Offer {
         const singleProp = document.createElement(child);
         singleProp.textContent = property;
         singleProp.className = propName;
-        singleProp.dataset.prodId = propName + id;
+        singleProp.id = propName + id;
         parent.appendChild(singleProp);
     }
 
@@ -71,9 +71,8 @@ class Offer {
         const cartBtn = document.createElement('button');
         cartBtn.className = 'add-cart-btn';
         cartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Dodaj';
-        // cartBtn.addEventListener('click', this._handleAddToCart(id).bind(this));
+        cartBtn.addEventListener('click', this.cart.handleAddToCart(id).bind(this));
         parent.appendChild(cartBtn);
-        // return cartBtn
     }
 
     _addCount (id, parent) {
@@ -84,14 +83,7 @@ class Offer {
         count.min = 1;
         count.value = 1;
         parent.appendChild(count);
-    }
-
-    _handleAddToCart (id) {
-
-    }
-
+    }  
 }
-
-
 
 export default Offer;

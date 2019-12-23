@@ -14,6 +14,13 @@ class Shop {
     }
 }
 
+
 const shop = new Shop();
+
+// document.addEventListener("DOMContentLoaded", function() {
+//     shop.showCartBtn.addEventListener('click', () => shop.cart.style.display = 'block');
+//     shop.closeCartBatts.addEventListener('click', () => shop.cart.style.display = 'none');
+//     shop.buyBttn.addEventListener('click', shop.handleBuyBttn.bind(shop));
+// });
 
 shop.getOffer();
