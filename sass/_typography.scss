@@ -1,1 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Mr+De+Haviland|Roboto:400,400i,500,500i,700,700i&display=swap&subset=latin-ext');
+
+.container {
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+h1 {
+    color: $headerColor;
+    text-shadow: 3px 2px $color1;
+    font-family: 'Mr De Haviland', cursive;
+    font-size: 100px;
+}
+
+p {
+  
+}

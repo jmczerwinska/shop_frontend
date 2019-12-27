@@ -19,7 +19,7 @@ class Cart {
         this._getSummaryPrice();
         this.emptyCart.style.display = 'none';
         this.fullCart.style.display = 'block';
-        // this.message.show("Dodano produkt do koszyka.");
+        new Message("Dodano produkt do koszyka.");
     }
 
     _createRow (id) {

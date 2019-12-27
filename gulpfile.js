@@ -12,7 +12,7 @@ gulp.task('sass', () =>
       .pipe(gulp.dest('./css'))
   );
  
-gulp.task('default', () =>
+gulp.task('babel', () =>
     gulp.src('./scripts/**/*.js')
         .pipe(babel({
             presets: ['@babel/env']
@@ -22,5 +22,5 @@ gulp.task('default', () =>
 
 gulp.task('tasks:watch', () => {
     gulp.watch('./sass/**/*.scss', gulp.parallel('sass'));
-    gulp.watch('./scripts/**/*.js', gulp.parallel('default'));
+    gulp.watch('./scripts/**/*.js', gulp.parallel('babel'));
 });

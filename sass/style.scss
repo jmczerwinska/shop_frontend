@@ -11,12 +11,9 @@
         background-image: url(../img/bg_img.jpg);
         background-size: 100% 100%;
         h1 {
-            color: $headerColor;
-            text-shadow: 3px 2px $color1;
-            font-family: 'Mr De Haviland', cursive;
             text-align: center;
             transform: translate(0, 60%);
-            font-size: 100px;
+            
         } 
     }
     .cart {
