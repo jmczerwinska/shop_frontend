@@ -1,3 +1,5 @@
+import Message from './message.js';
+
 class Cart {
     constructor() {
         this.cart = document.querySelector('.cart');
@@ -7,20 +9,23 @@ class Cart {
         this.cartTableBd = document.querySelector('.cart-table-body');
         this.emptyCart = document.querySelector('.empty-cart');
         this.fullCart = document.querySelector('.full-cart');
+
+        this.message = new Message();
     }
 
-    _handleAddToCart (id) {
-        this.createRow(id);
-        alert("Dodano produkt do koszyka.");
+    handleAddToCart (id) {
+        this._createRow(id);
+        this._getSummaryPrice();
         this.emptyCart.style.display = 'none';
         this.fullCart.style.display = 'block';
+        this.message.show("Dodano produkt do koszyka.");
     }
 
-    createRow (id) {
-        const row = document.createElement('tr');
+    _createRow (id) {
+        const row = document._createElement('tr');
         row.className = 'cart-row';
         row.id = id;
-        this.createCells(id, row);
+        this._createCells(id, row);
         this.cartTableBd.appendChild(row);
     }
 
@@ -37,11 +42,13 @@ class Cart {
     }
 
     _addDataToCell = function (cell,id) {
-        const price = document.querySelector(`#price${CSS.escape(id)}`).innerHTML;
+        const price = document.querySelector(`#price${CSS.escape(id)}`).textContent;
         const count = document.querySelector(`#count${CSS.escape(id)}`).value;
+        const name = document.querySelector(`#name${CSS.escape(id)}`).textContent;
+        
         switch (cell.className) {
             case 'cell-name':
-                return cell.textContent = document.querySelector('[data-prod-id= name'+CSS.escape(id)+']').innerHTML;
+                return cell.textContent = name;
             case 'cell-count':
                 return cell.textContent = count;
             case 'cell-price':
@@ -52,6 +59,37 @@ class Cart {
         
     }
 
+    _getSummaryPrice () {
+       const sum = document.createElement('span');
+       sum.textContent = this.cartTableBd.querySelectorAll('.cell-price').reduce((a, b) => a + b);
+       document.getElementById('summary-price').appendChild(sum);
+    }
+
+    _collectBuyData (rows){
+        let data = [];
+        for (let i=0; i<rows.length; i++) {
+            const rowId = rows[i].dataset.prodId;
+            const count = document.querySelector(`#cell-count${CSS.escape(rowId)}`).innerHTML;
+            const prodData = {
+                'id': parseInt(rowId),
+                'count': parseInt(count)
+            }
+            data.push(prodData);
+        }
+        return data;
+    }
+    
+    _handleBuyBttn = function () {
+        const rows = this.cartTableBd.children;
+        const allData = this._collectBuyData(rows);
+        for (let i=0; i<allData.length; i++) {
+            api.buyProduct(allData[i].id, {"count": allData[i].count});
+        }
+        this.message.show('Dziękujemy za dokonanie zakupów w naszym sklepie!');
+        this.cartTableBd.querySelectorAll('*').forEach(r => r.remove());
+        this.fullCart.style.display = 'none';
+        this.emptyCart.style.display = 'block';
+    }
 }
 
 export default Cart;

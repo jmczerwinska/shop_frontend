@@ -1,9 +1,9 @@
-// import Cart from './cart.js';
+import Cart from './cart.js';
 
 class Offer {
     constructor () {
         this.offer = document.querySelector('.offer');
-        // this.cart = new Cart();
+        this.cart = new Cart();
     }
 
     showOffer (allData) {
