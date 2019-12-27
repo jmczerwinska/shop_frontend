@@ -9,7 +9,7 @@ class Shop {
         this.cart = new Cart();    
     }
 
-    getOffer (data) {
+    getOffer () {
        this.api.getAll().then(res => this.offer.showOffer(res));
     }
 }
@@ -17,10 +17,10 @@ class Shop {
 
 const shop = new Shop();
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     shop.showCartBtn.addEventListener('click', () => shop.cart.style.display = 'block');
-//     shop.closeCartBatts.addEventListener('click', () => shop.cart.style.display = 'none');
-//     shop.buyBttn.addEventListener('click', shop.handleBuyBttn.bind(shop));
-// });
+document.addEventListener("DOMContentLoaded", function() {
+    shop.cart.showCartBtn.addEventListener('click', () => shop.cart.cart.style.display = 'block');
+    shop.cart.closeCartBtn.addEventListener('click', () => shop.cart.cart.style.display = 'none');
+    // shop.buyBttn.addEventListener('click', shop.handleBuyBttn.bind(shop));
+});
 
 shop.getOffer();

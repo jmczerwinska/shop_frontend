@@ -7,11 +7,9 @@ class Offer {
     }
 
     showOffer (allData) {
-        console.log(allData.length)
         for (let i=0; i<allData.length; i++) {
-            const id = allData[i].data._id;
+            const id = allData[i]._id;
             const data = allData[i].data;
-            console.log(allData)
             this._createItem(id, data);
         }
     }
@@ -20,7 +18,6 @@ class Offer {
         const item = document.createElement('div');
         item.className = "item";
         item.id = 'item-' + id;
-            
         const itemPropDiv = this._createItemPropDiv(id, data);
         const addToCartDiv = this._createAddToCartDiv(id, data);
             
@@ -57,7 +54,7 @@ class Offer {
 
         if (data.count > 0) {
         this._addCount(id, addToCartDiv);
-        this._addCartBtn(addToCartDiv);
+        this._addCartBtn(id, addToCartDiv);
         } else {
             const status = document.createElement('p');
             status.textContent = 'produkt chwilowo niedostępny';
@@ -67,23 +64,38 @@ class Offer {
         return addToCartDiv;
     }
 
-    _addCartBtn (parent) {
+    _addCartBtn (id, parent) {
         const cartBtn = document.createElement('button');
         cartBtn.className = 'add-cart-btn';
+        cartBtn.dataset.btnId = id;
         cartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Dodaj';
-        cartBtn.addEventListener('click', this.cart.handleAddToCart(id).bind(this));
+        cartBtn.addEventListener('click', this._handleAddToCart.bind(this));
         parent.appendChild(cartBtn);
+        
     }
 
     _addCount (id, parent) {
         const count = document.createElement('input');
         count.className = 'count';
-        count.dataset.prodId = 'count-' + id;
+        count.id = 'count' + id;
         count.type = 'number';
         count.min = 1;
         count.value = 1;
         parent.appendChild(count);
-    }  
+    }
+
+    
+    
+    _handleAddToCart (e) {
+        const id = e.target.dataset.btnId;
+        this.cart.addToCart(id);
+    //     this.cart.createRow(id);
+    //     this.cart.getSummaryPrice();
+    //     this.cart.emptyCart.style.display = 'none';
+    //     this.cart.fullCart.style.display = 'block';
+    //     // this.message.show("Dodano produkt do koszyka.");
+    }
+
 }
 
 export default Offer;

@@ -13,16 +13,16 @@ class Cart {
         this.message = new Message();
     }
 
-    handleAddToCart (id) {
+    addToCart (id) {
         this._createRow(id);
-        this._getSummaryPrice();
+        // this._getSummaryPrice();
         this.emptyCart.style.display = 'none';
         this.fullCart.style.display = 'block';
-        this.message.show("Dodano produkt do koszyka.");
+        // this.message.show("Dodano produkt do koszyka.");
     }
 
     _createRow (id) {
-        const row = document._createElement('tr');
+        const row = document.createElement('tr');
         row.className = 'cart-row';
         row.id = id;
         this._createCells(id, row);
@@ -36,12 +36,12 @@ class Cart {
             const cell = document.createElement('td');
             cell.className = 'cell-' + cellNames[i];
             cell.id = 'cell-' + cellNames[i] + id;
-            cell.textContent = this.addDataToCell(cell, id);
+            cell.textContent = this._addDataToCell(cell, id);
             parent.appendChild(cell);
         }
     }
 
-    _addDataToCell = function (cell,id) {
+    _addDataToCell (cell,id) {
         const price = document.querySelector(`#price${CSS.escape(id)}`).textContent;
         const count = document.querySelector(`#count${CSS.escape(id)}`).value;
         const name = document.querySelector(`#name${CSS.escape(id)}`).textContent;
@@ -61,11 +61,15 @@ class Cart {
 
     _getSummaryPrice () {
        const sum = document.createElement('span');
-       sum.textContent = this.cartTableBd.querySelectorAll('.cell-price').reduce((a, b) => a + b);
-       document.getElementById('summary-price').appendChild(sum);
+       const prices = [];
+       this.cartTableBd.querySelectorAll('.cell-price').forEach(n => prices.push(n.textContent));
+       console.log(sum);
+       sum.reduce((a, b) => a + b);
+       
+    //    document.getElementById('summary-price').appendChild(sum);
     }
 
-    _collectBuyData (rows){
+    _collectBuyData (rows) {
         let data = [];
         for (let i=0; i<rows.length; i++) {
             const rowId = rows[i].dataset.prodId;
@@ -79,7 +83,7 @@ class Cart {
         return data;
     }
     
-    _handleBuyBttn = function () {
+    handleBuyBttn () {
         const rows = this.cartTableBd.children;
         const allData = this._collectBuyData(rows);
         for (let i=0; i<allData.length; i++) {
