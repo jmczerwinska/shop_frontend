@@ -96,9 +96,7 @@ class Cart {
         this.emptyCart.style.display = 'block';
     }
 
-    addEvents (){
-        this.showCartBtn.addEventListener('click', () => this.cart.style.display = 'block');
-        this.closeCartBtn.addEventListener('click', () => this.cart.style.display = 'none');
+    addEvent (){
         this.buyBtn.addEventListener('click', this._handleBuyBtn.bind(this));
     }
 }

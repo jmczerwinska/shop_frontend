@@ -1,22 +1,26 @@
 body {
-    margin:0;
+    margin: 0;
 }
+
 .modal {
     position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border: 2px solid #cccccc;
     padding: 50px 100px;
     background-color: #eeeeee;
     text-align: center;
+
     .close-modal-bttn {
         text-align: center;
     }
 }
+
 .container {
     display: flex;
     flex-direction: column;
+
     nav {
         width: 100%;
         position: fixed;
@@ -25,22 +29,22 @@ body {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        height: 50px;   
+        height: 50px;
+
         ul {
             list-style-type: none;
             display: flex;
             flex-direction: row;
             justify-content: left;
         }
-        
+
     }
+
     .hero-image {
         height: 250px;
     }
+
     .shop {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: row;
         .offer {
             margin-top: 40px;
             flex-grow: 1;
@@ -48,22 +52,57 @@ body {
             flex-direction: row;
             flex-wrap: wrap;
             align-items: stretch;
+
             .item {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 padding: 15px;
                 max-width: 220px;
+
                 .count {
                     width: 25px;
                 }
             }
         }
+
         .cart {
-            padding-top: 40px;
-            display: none;
-            width: 40%;
-            min-width: 300px;
+            position: fixed;
+            top: 50px;
+            right: -272px;
+            z-index: 99999;
+            transition: right 0.5s ease-out 0s;
+            height: 450px;
+
+            &:hover {
+                right: 0;
+            }
+
+            .cart-content {
+                width: 250px;
+                top: -80px;
+                text-align: center;
+                height: max;
+                padding: 10px;
+        
+                z-index: 20;
+                position: relative;
+                border-radius: 10px 0 0 10px;
+            }
+
+            .cart-panel {
+                width: 90px;
+                font-weight: bold;
+                border-radius: 10px;
+                padding: 5px 5px 25px 5px;
+                top: 0px;
+                position: relative;
+                left: -75px;
+
+                z-index: 1;
+                background-color: $cartBgColor;
+
+            }
         }
     }
 }
