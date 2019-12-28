@@ -18,4 +18,4 @@ class Shop {
 const shop = new Shop();
 
 shop.getOffer();
-shop.cart.addEvents();
+shop.cart.addEvent();
