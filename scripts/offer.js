@@ -70,8 +70,7 @@ class Offer {
         cartBtn.dataset.btnId = id;
         cartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Dodaj';
         cartBtn.addEventListener('click', this._handleAddToCart.bind(this));
-        parent.appendChild(cartBtn);
-        
+        parent.appendChild(cartBtn);  
     }
 
     _addCount (id, parent) {

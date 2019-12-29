@@ -7,22 +7,98 @@ class Storage {
         this.api = new Api();
     }
 
-    viewStorage() {
+    _createTbBd(allData) {
+        for (let i = 0; i < allData.length; i++) {
+            const id = allData[i]._id;
+            const data = allData[i].data;
+            this._createRow(id, data);
+        }
+    }
 
+    _createRow(id, data) {
+        const row = document.createElement('tr');
+        row.className = 'row';
+        row.id = 'row' + id;
+
+        this._createPropCells(id, data, row);
+        this._addDeleteBtn(id, row);
+        this.storageTbBd.appendChild(row);
+    }
+
+    _createPropCells(id, data, parent) {
+        const cellNames = ['id', 'name', 'description', 'count', 'price'];
+
+        for (let i = 0; i < cellNames.length; i++) {
+            const cell = document.createElement('td');
+            cell.className = 'cell-' + cellNames[i];
+            cell.id = 'cart-' + cellNames[i] + id;
+            cell.textContent = this._addDataToCell(cell, data, id);
+            parent.appendChild(cell);
+        }
+    }
+
+    _addDataToCell(cell, data, id) {
+        const { name, description, count, price } = data;
+
+        switch (cell.className) {
+            case 'cell-id':
+                return cell.textContent = id;
+            case 'cell-name':
+                return cell.textContent = name;
+            case 'cell-description':
+                return cell.textContent = description;
+            case 'cell-count':
+                return cell.textContent = count;
+            case 'cell-price':
+                return cell.textContent = price;
+        }
+
+    }
+
+    _addDeleteBtn(id, parent) {
+        const delBtn = document.createElement('button');
+        delBtn.className = 't-btn';
+        delBtn.dataset.btnId = id;
+        delBtn.textContent = 'Usuń';
+        delBtn.addEventListener('click', this._handleDeleteTb.bind(this));
+        parent.appendChild(delBtn);
+    }
+
+    _handleDeleteTb(e) {
+        const id = e.target.dataset.btnId;
+        this.api.deleteProduct(id);
+        new Message('Usunięto produkt z magazynu.');
+    }
+
+    _addUpdateBtn(id, parent) {
+        const upBtn = document.createElement('button');
+        upBtn.className = 't-btn';
+        upBtn.dataset.btnId = id;
+        upBtn.textContent = 'Aktualizuj';
+        upBtn.addEventListener('click', this._handleUpdateTb.bind(this));
+        parent.appendChild(upBtn);
+    }
+
+    _handleUpdateTb() {
+    
+    }
+
+    showStorage() {
+        this.api.getAll().then((res) => this._createTbBd(res));
     }
 }
 
 class NewProduct extends Storage {
     constructor() {
         super();
-    
+
         this.addId = document.getElementById('add-id');
         this.addName = document.getElementById('add-name');
         this.addDescription = document.getElementById('add-descript');
         this.addPrice = document.getElementById('add-price');
         this.addCount = document.getElementById('add-count');
         this.addInputs = [this.addId, this.addName, this.addDescription, this.addPrice, this.addCount];
-        
+
         this.addBtn = document.getElementById('add-btn');
 
         for (let i = 0; i < this.addInputs.length; i++) {
@@ -45,11 +121,11 @@ class NewProduct extends Storage {
         }
 
         this.api.addProduct(id, data);
-       
+
         new Message('Dodano nowy produkt do magazynu.')
         this.addInputs.forEach(el => el.value = '');
         this.addBtn.disabled = true;
-        this.viewStorage();
+        this.showStorage();
     }
 }
 
@@ -76,7 +152,7 @@ class UpdateProduct extends Storage {
         this.updateBtn.disabled = this.updateInputs.every(el => el === '');
     }
 
-    _handleChange () {
+    _handleChange() {
         const id = this.updateId.value;
         const data = {
             "name": this.updateName.value,
@@ -88,14 +164,10 @@ class UpdateProduct extends Storage {
         this.api.updateProduct(id, data);
 
         new Message('Produkt został zmieniony.');
-        this.updateInputs.forEach(el=> el.value = '');
+        this.updateInputs.forEach(el => el.value = '');
         this.updateBtn.disabled = true;
-        this.viewStorage();
+        this.showStorage();
     }
-
-    _clearSection() {
-        ;
-    }    
 }
 
 class DeleteProduct extends Storage {
@@ -104,24 +176,24 @@ class DeleteProduct extends Storage {
 
         this.deleteId = document.getElementById('delete-id');
         this.deleteBtn = document.getElementById('delete-btn');
-        
+
         this.deleteId.addEventListener('input', this._checkDeleteInput.bind(this));
         this.deleteBtn.addEventListener('click', this._handleDelete.bind(this));
     }
-    
+
     _checkDeleteInput() {
         this.deleteBtn.disabled = !(this.deleteId !== '');
-    } 
+    }
 
     _handleDelete() {
         const id = this.deleteId.value;
-        
+
         this.api.deleteProduct(id);
-        
+
         new Message('Usunięto produkt z magazynu.');
         this.deleteId.value = '';
         this.deleteBtn.disabled = true;
-        // this.viewStorage();
+        this.showStorage();
     }
 }
 
@@ -129,3 +201,6 @@ const storage = new Storage();
 new DeleteProduct();
 new NewProduct();
 new UpdateProduct();
+
+
+storage.showStorage();
