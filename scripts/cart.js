@@ -87,10 +87,7 @@ class Cart {
     _handleBuyBtn () {
         const rows = this.cartTableBd.children;
         const allData = this._collectBuyData(rows);
-        for (let i=0; i<allData.length; i++) {
-            this.api.buyProduct(allData[i].id, {"count": allData[i].count});
-        }
-        new Message('Dziękujemy za dokonanie zakupów w naszym sklepie!');
+        this.api.buyAllProducts(allData);
         this.cartTableBd.querySelectorAll('*').forEach(r => r.remove());
         this.fullCart.style.display = 'none';
         this.emptyCart.style.display = 'block';

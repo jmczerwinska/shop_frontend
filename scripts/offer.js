@@ -88,11 +88,6 @@ class Offer {
     _handleAddToCart (e) {
         const id = e.target.dataset.btnId;
         this.cart.addToCart(id);
-    //     this.cart.createRow(id);
-    //     this.cart.getSummaryPrice();
-    //     this.cart.emptyCart.style.display = 'none';
-    //     this.cart.fullCart.style.display = 'block';
-    //     // this.message.show("Dodano produkt do koszyka.");
     }
 
 }

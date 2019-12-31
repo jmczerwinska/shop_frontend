@@ -1,5 +1,4 @@
 import Api from './api.js';
-import Message from './message.js';
 
 class Storage {
     constructor() {
@@ -21,6 +20,7 @@ class Storage {
         row.id = 'row' + id;
 
         this._createPropCells(id, data, row);
+        this._addUpdateBtn(id, row);
         this._addDeleteBtn(id, row);
         this.storageTbBd.appendChild(row);
     }
@@ -67,7 +67,7 @@ class Storage {
     _handleDeleteTb(e) {
         const id = e.target.dataset.btnId;
         this.api.deleteProduct(id);
-        new Message('Usunięto produkt z magazynu.');
+        
     }
 
     _addUpdateBtn(id, parent) {
@@ -122,10 +122,9 @@ class NewProduct extends Storage {
 
         this.api.addProduct(id, data);
 
-        new Message('Dodano nowy produkt do magazynu.')
         this.addInputs.forEach(el => el.value = '');
         this.addBtn.disabled = true;
-        this.showStorage();
+        // this._createRow(id,data);
     }
 }
 
@@ -161,12 +160,11 @@ class UpdateProduct extends Storage {
             "count": this.updateCount.value
         }
 
-        this.api.updateProduct(id, data);
+        this.api.updateProduct(id, data);  
 
-        new Message('Produkt został zmieniony.');
         this.updateInputs.forEach(el => el.value = '');
         this.updateBtn.disabled = true;
-        this.showStorage();
+        
     }
 }
 
@@ -190,10 +188,9 @@ class DeleteProduct extends Storage {
 
         this.api.deleteProduct(id);
 
-        new Message('Usunięto produkt z magazynu.');
         this.deleteId.value = '';
         this.deleteBtn.disabled = true;
-        this.showStorage();
+        
     }
 }
 

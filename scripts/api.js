@@ -1,3 +1,5 @@
+import Message from './message.js';
+
 class Api {
     constructor(){
         this.url = 'http://localhost:3000/db/make-up-magic/';
@@ -13,29 +15,27 @@ class Api {
         }
         return response.json()
     }
-
+    
     _handleError (error) {
         console.log('Error: ' + error);
         switch (error) {
             case 400:
-                alert(error + ' - Twoje zapytanie nie obejmuje wszystkich wymaganych parametrów.');
+                new Message(`Błąd ${error} - Twoje zapytanie nie obejmuje wszystkich wymaganych parametrów.`);
                 break;
             case 401:
-                alert(error + ' -  Brak autoryzacji. Zaloguj się do sklepu.');
+                new Message(`Błąd ${error} -  Brak autoryzacji. Zaloguj się do sklepu.`);
                 break;
             case 403:
-                alert(error  + ' - Nie masz uprawnień do modyfikowania zawartości magazynu.');
+                new Message(`Błąd ${error} - Nie masz uprawnień do modyfikowania zawartości magazynu.`);
                 break;
             case 404:
-                alert(error + ' - W magazynie nie ma produktu o podanym id.');
+                new Message(`Błąd ${error} - W magazynie nie ma produktu o podanym id.`);
                 break;
             case 409:
-                    alert(error + ' - Nie można dodać produktu. W magazynie istnieje już produkt o takim samym id.');
-                    break;
+                new Message(`Błąd ${error} - Nie można dodać produktu. W magazynie istnieje już produkt o takim samym id.`);
+                break;
         }
     }
-
-
      
     _post (path, data) {
         const url = this.url + path;
@@ -43,8 +43,7 @@ class Api {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: this.headers
-            }).then(this._handleResponse)
-            .catch(this._handleError);
+            }).then(this._handleResponse);
     }
 
     _put (path, data) {
@@ -53,46 +52,64 @@ class Api {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: this.headers
-        }).then(this._handleResponse).catch(this._handleError);
+        }).then(this._handleResponse);
     }
 
     _get (path) {
         const url = this.url + path;
         return fetch(url, {
             method: 'GET'
-        }).then(this._handleResponse).catch(this._handleError);
+        }).then(this._handleResponse);
     }
     
     _delete (path) {
         const url = this.url + path;
         return fetch(url, {
             method: 'DELETE'
-        }).then(this._handleResponse).catch(this._handleError);
+        }).then(this._handleResponse);
     }
 
     addProduct  (id, data) {
         return this._post(id, data)
+            .then(() => new Message('Dodano nowy produkt do magazynu.'))
+            .catch((e) => this._handleError(e));
     }
 
     getProduct (id) {
-        return this._get(id);
+        return this._get(id)
+            .catch((e) => this._handleError(e));
     }
     
     getAll () {
-        return this._get('');
+        return this._get('')
+            .catch((e) => this._handleError(e));
     }
     
     deleteProduct (id) {
-        return this._delete(id);
+        return this._delete(id)
+            .then(() => new Message('Usunięto produkt z magazynu.'))
+            .catch((e) => this._handleError(e));
     }
     
     updateProduct (id, data) {
-        return this._put(id, data);
+        return this._put(id, data)
+            .then(() => new Message('Produkt został zmieniony.'))
+            .catch((e) => this._handleError(e));
     }
     
-    buyProduct (id, count) {
+    _buyProduct (id, count) {
         const path = id + '/buy';
-        return this._put(path, count);
+        return this._put(path, count)
+            .catch((e) => this._handleError(e));
+    }
+    
+    buyAllProducts (productsDataArr) {
+        const promiseArr = [];
+        for (let i=0; i<productsDataArr.length; i++) {
+            const buyOne = this._buyProduct(productsDataArr[i].id, {"count": productsDataArr[i].count});
+            promiseArr.push(buyOne);
+        }
+        Promise.all(promiseArr).then(() => new Message('Dziękujemy za dokonanie zakupów w naszym sklepie!'));
     }
 }
 
