@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joanna Czerwińska <czerwinska.jm@gmail.com>",
-  "repository": "https://github.com/jmczerwinska/e-shop_frontend",
+  "repository": "github:jmczerwinska/e-shop_frontend",
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {

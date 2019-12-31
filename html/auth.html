@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Make-Up Panel Logowania</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/4338054ecb.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -15,7 +15,7 @@
                 <a href="index.html">
                     <li class="menu-el">Sklep</li>
                 </a>                    
-                <a href="#">
+                <a href="management.html">
                     <li class="menu-el">Magazyn</li>
                 </a>
             </ul>
@@ -24,27 +24,32 @@
     </div>
     <div class="authorization">
         <div class="sign-in">
+            <h3>Utwórz konto</h3>
             <form>
                 <label>Login:<input type="text" id="login"/></label>
+                <br>
+                <label>E-mail:<input type="text" id="email"/></label>
+                <br>
                 <label>Hasło:<input type="text" id="pass"/></label>
+                <br>
                 <label>Powtórz hasło:<input type="text" id="repeat-pass"/></label>
-                <label>Imię:<input type="text" id="log-pass"/></label>
-                <label>Nazwisko:<input type="text" id="log-pass"/></label>
-                <label>Ulica:<input type="text" id="log-pass"/></label>
-                <label>Numer budynku:<input type="text" id="log-pass"/></label>
-                <label>Numer lokalu:<input type="text" id="log-pass"/></label>
-                <label>Kod pocztowy:<input type="text" id="log-pass"/></label>
-                <label>Miasto:<input type="text" id="log-pass"/></label>
+                <br>
+                <label>Imię:<input type="text" id="first-name"/></label>
             </form>
         </div>
         <div class="log-in">
+            <h3>Zaloguj się</h3>
             <form>
                 <label>Login:<input type="text" id="log-login"/></label>
+                <br>
                 <label>Hasło:<input type="text" id="log-pass"/></label>
+                <br>
+                <button>Zaloguj</button>
             </form>
+            <p>Nie masz jeszcze konta? <a href="#">Zarejestruj się!</a></p>
         </div>
     </div>
 
-<script type="module" src="./script/auth.js"></script>
+<script type="module" src="/scripts/auth.js"></script>
 </body>
 </html>
