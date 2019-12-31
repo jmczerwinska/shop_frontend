@@ -88,21 +88,41 @@ body {
                 z-index: 20;
                 position: relative;
                 border-radius: 10px 0 0 10px;
+                .empty-cart {
+                    p{
+                        margin-top: 50px;
+                    }
+                }
             }
 
             .cart-panel {
-                width: 90px;
+                width: 80px;
                 font-weight: bold;
                 border-radius: 10px;
-                padding: 5px 5px 25px 5px;
-                top: 0px;
+                padding: 5px;
+                top: 10px;
                 position: relative;
-                left: -75px;
+                left: -76px;
 
                 z-index: 1;
                 background-color: $cartBgColor;
-
+                
+                .cart-icon {
+                    padding: 20px 20px 20px 16px;
+                }
             }
         }
     }
+
+    .authorization {
+        margin-top: 100px;
+        .sign-in {
+            display: flex;
+            flex-direction: column;
+            margin-top: 100px;
+           
+        }
+    
+    }
+    
 }

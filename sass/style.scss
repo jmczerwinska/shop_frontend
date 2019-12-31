@@ -6,6 +6,9 @@
 .container{
     nav{
         background-color: $color5;
+        .after-log {
+            display: none;
+        }
     }
     .hero-image {
         background-image: url(../img/bg_img.jpg);
@@ -18,20 +21,24 @@
     }
     .cart {
         background-color: $cartBgColor;
-        .button{
-            #close-cart {
-                text-align: right;
+        .cart-panel {
+            color: $cartIcon;
+        }
+        .cart-content{
+            h3 {
+                color: $cartIcon;
+            }        
+            .empty-cart {
+                color: $emptyCartTxt;
+                text-align: center;
             }
+            .full-cart {
+                display: none;
+            }
+
         }
         
-        .empty-cart {
-            color: $emptyCartTxt;
-            text-align: center;
-            
-        }
-        .full-cart {
-            display: none;
-        }
+
     }
     
 }
