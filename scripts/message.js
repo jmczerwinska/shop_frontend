@@ -18,12 +18,8 @@ class Message {
         const closeBtn = document.createElement('button');
         closeBtn.textContent = 'Zamknij';
         closeBtn.className = 'close-modal-btn'
-        closeBtn.addEventListener('click', this._close.bind(this));
+        closeBtn.addEventListener('click', () => this.message.remove());
         this.message.appendChild(closeBtn);
-    }
-    
-    _close () {
-        this.message.remove();
     }
 }
 
