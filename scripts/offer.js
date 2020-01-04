@@ -1,12 +1,12 @@
 import Cart from './cart.js';
 
 class Offer {
-    constructor () {
+    constructor() {
         this.offer = document.querySelector('.offer');
         this.cart = new Cart();
     }
 
-    showOffer (allData) {
+    showOffer(allData) {
         for (let i=0; i<allData.length; i++) {
             const id = allData[i]._id;
             const data = allData[i].data;
@@ -14,7 +14,7 @@ class Offer {
         }
     }
 
-    _createItem (id, data) {
+    _createItem(id, data) {
         const item = document.createElement('div');
         item.className = "item";
         item.id = 'item-' + id;
@@ -40,7 +40,7 @@ class Offer {
         return itemPropDiv;
     }
     
-    _createPropEl (id, propName, property, child, parent){
+    _createPropEl(id, propName, property, child, parent) {
         const singleProp = document.createElement(child);
         singleProp.textContent = property;
         singleProp.className = propName;
@@ -48,7 +48,7 @@ class Offer {
         parent.appendChild(singleProp);
     }
 
-    _createAddToCartDiv (id, data) {
+    _createAddToCartDiv(id, data) {
         const addToCartDiv = document.createElement('div');
         addToCartDiv.className = 'add-to-cart';
 
@@ -64,7 +64,7 @@ class Offer {
         return addToCartDiv;
     }
 
-    _addCartBtn (id, parent) {
+    _addCartBtn(id, parent) {
         const cartBtn = document.createElement('button');
         cartBtn.className = 'add-cart-btn';
         cartBtn.dataset.btnId = id;
@@ -73,7 +73,7 @@ class Offer {
         parent.appendChild(cartBtn);  
     }
 
-    _addCount (id, parent) {
+    _addCount(id, parent) {
         const count = document.createElement('input');
         count.className = 'count';
         count.id = 'count' + id;
@@ -82,10 +82,8 @@ class Offer {
         count.value = 1;
         parent.appendChild(count);
     }
-
     
-    
-    _handleAddToCart (e) {
+    _handleAddToCart(e) {
         const id = e.target.dataset.btnId;
         this.cart.addToCart(id);
     }

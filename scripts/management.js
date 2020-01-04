@@ -31,7 +31,7 @@ class Storage {
         for (let i = 0; i < cellNames.length; i++) {
             const cell = document.createElement('td');
             cell.className = 'cell-' + cellNames[i];
-            cell.id = 'cart-' + cellNames[i] + id;
+            cell.id = cellNames[i] + id;
             cell.textContent = this._addDataToCell(cell, data, id);
             parent.appendChild(cell);
         }

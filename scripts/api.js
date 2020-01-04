@@ -1,7 +1,7 @@
 import Message from './message.js';
 
 class Api {
-    constructor(){
+    constructor() {
         this.url = 'http://localhost:3000/db/make-up-magic/';
         this.headers = new Headers({
             'Accept': 'application/json',
@@ -9,14 +9,14 @@ class Api {
         });
     }
     
-    _handleResponse (response, message) {
+    _handleResponse(response) {
         if (response.status >= 400) {
             throw response.status;
         }
-        return response.json()
+        return response.json();
     }
     
-    _handleError (error) {
+    _handleError(error) {
         console.log('Error: ' + error);
         switch (error) {
             case 400:
@@ -37,7 +37,7 @@ class Api {
         }
     }
      
-    _post (path, data) {
+    _post(path, data) {
         const url = this.url + path;
         return fetch(url, {
                 method: 'POST',
@@ -46,7 +46,7 @@ class Api {
             }).then(this._handleResponse);
     }
 
-    _put (path, data) {
+    _put(path, data) {
         const url = this.url + path;
         return fetch(url, {
             method: 'PUT',
@@ -55,55 +55,55 @@ class Api {
         }).then(this._handleResponse);
     }
 
-    _get (path) {
+    _get(path) {
         const url = this.url + path;
         return fetch(url, {
             method: 'GET'
         }).then(this._handleResponse);
     }
     
-    _delete (path) {
+    _delete(path) {
         const url = this.url + path;
         return fetch(url, {
             method: 'DELETE'
         }).then(this._handleResponse);
     }
 
-    addProduct  (id, data) {
+    addProduct(id, data) {
         return this._post(id, data)
             .then(() => new Message('Dodano nowy produkt do magazynu.'))
             .catch((e) => this._handleError(e));
     }
 
-    getProduct (id) {
+    getProduct(id) {
         return this._get(id)
             .catch((e) => this._handleError(e));
     }
     
-    getAll () {
+    getAll() {
         return this._get('')
             .catch((e) => this._handleError(e));
     }
     
-    deleteProduct (id) {
+    deleteProduct(id) {
         return this._delete(id)
             .then(() => new Message('Usunięto produkt z magazynu.'))
             .catch((e) => this._handleError(e));
     }
     
-    updateProduct (id, data) {
+    updateProduct(id, data) {
         return this._put(id, data)
             .then(() => new Message('Produkt został zmieniony.'))
             .catch((e) => this._handleError(e));
     }
     
-    _buyProduct (id, count) {
+    _buyProduct(id, count) {
         const path = id + '/buy';
         return this._put(path, count)
             .catch((e) => this._handleError(e));
     }
     
-    buyAllProducts (productsDataArr) {
+    buyAllProducts(productsDataArr) {
         const promiseArr = [];
         for (let i=0; i<productsDataArr.length; i++) {
             const buyOne = this._buyProduct(productsDataArr[i].id, {"count": productsDataArr[i].count});

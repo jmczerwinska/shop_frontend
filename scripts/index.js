@@ -9,7 +9,7 @@ class Shop {
         this.cart = new Cart();    
     }
 
-    getOffer () {
+    getOffer() {
        this.api.getAll().then(res => this.offer.showOffer(res));
     }
 }

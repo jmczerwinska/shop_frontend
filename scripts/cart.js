@@ -14,7 +14,7 @@ class Cart {
         this.api = new Api();
     }
 
-    addToCart (id) {
+    addToCart(id) {
         this._createRow(id);
         this._getSummaryPrice();
         this.emptyCart.style.display = 'none';
@@ -22,7 +22,7 @@ class Cart {
         new Message("Dodano produkt do koszyka.");
     }
 
-    _createRow (id) {
+    _createRow(id) {
         const row = document.createElement('tr');
         row.className = 'cart-row';
         row.id = id;
@@ -30,7 +30,7 @@ class Cart {
         this.cartTableBd.appendChild(row);
     }
 
-    _createCells (id, parent) {
+    _createCells(id, parent) {
         const cellNames = ['name', 'count', 'price', 'delete'];
 
         for (let i=0; i<cellNames.length; i++) {
@@ -42,7 +42,7 @@ class Cart {
         }
     }
 
-    _addDataToCell (cell,id) {
+    _addDataToCell(cell,id) {
         const price = document.querySelector(`#price${CSS.escape(id)}`).textContent;
         const count = document.querySelector(`#count${CSS.escape(id)}`).value;
         const name = document.querySelector(`#name${CSS.escape(id)}`).textContent;
@@ -60,7 +60,7 @@ class Cart {
         
     }
 
-    _getSummaryPrice () {
+    _getSummaryPrice() {
         const sum = document.getElementById('summary-price');
         
         const prices = [];
@@ -70,7 +70,7 @@ class Cart {
         sum.textContent = `Wartość zamówienia ${sumPrice} zł`;
     }
 
-    _collectBuyData (rows) {
+    _collectBuyData(rows) {
         let data = [];
         for (let i=0; i<rows.length; i++) {
             const rowId = rows[i].id;
@@ -84,7 +84,7 @@ class Cart {
         return data;
     }
     
-    _handleBuyBtn () {
+    _handleBuyBtn() {
         const rows = this.cartTableBd.children;
         const allData = this._collectBuyData(rows);
         this.api.buyAllProducts(allData);
@@ -93,7 +93,7 @@ class Cart {
         this.emptyCart.style.display = 'block';
     }
 
-    addEvent (){
+    addEvent() {
         this.buyBtn.addEventListener('click', this._handleBuyBtn.bind(this));
     }
 }
