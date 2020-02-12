@@ -1,3 +1,5 @@
+@import 'colors';
+
 body {
     margin: 0;
 }
@@ -7,9 +9,9 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid #cccccc;
+    border: 2px solid $color1;
     padding: 50px 100px;
-    background-color: #eeeeee;
+    background-color: $color7;
     text-align: center;
 
     .close-modal-bttn {
@@ -27,8 +29,7 @@ body {
         z-index: 1;
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+       
         height: 50px;
 
         ul {
@@ -56,7 +57,7 @@ body {
             .item {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-items: end;
                 padding: 15px;
                 max-width: 220px;
 
@@ -69,7 +70,7 @@ body {
         .cart {
             position: fixed;
             top: 50px;
-            right: -272px;
+            right: -372px;
             z-index: 99999;
             transition: right 0.5s ease-out 0s;
             height: 450px;
@@ -79,7 +80,7 @@ body {
             }
 
             .cart-content {
-                width: 250px;
+                width: 350px;
                 top: -80px;
                 text-align: center;
                 height: max;

@@ -2,7 +2,7 @@ import Message from './message.js';
 
 class Api {
     constructor() {
-        this.url = 'http://localhost:3000/db/make-up-magic/';
+        this.url = 'http://localhost:3000/api/db/';
         this.headers = new Headers({
             'Accept': 'application/json',
             'Content-Type': 'application/json'

@@ -1,11 +1,40 @@
+@import 'resetCSS.scss';
 @import 'colors.scss';
 @import 'typography.scss';
 @import 'mixins.scss';
 @import 'layout.scss';
 
+
 .container{
-    nav{
+    .navigation{
         background-color: $color5;
+        align-items: center;
+        justify-content: space-between;
+        .navigation__link{
+            text-decoration: none;
+            color: $menuFontColor;
+            margin: 5px;
+            padding: 5px;
+                
+            .navigation__menu-el {
+                
+               
+                } 
+            &:hover{
+                border-bottom: solid 5px $color6;   
+            }
+            &:focus {
+                border-bottom: solid 5px $color6;   
+            }
+            &:active {
+                color: $menuActive;
+
+            }
+
+                
+            }
+
+        
         .after-log {
             display: none;
         }
@@ -14,10 +43,42 @@
         background-image: url(../img/bg_img.jpg);
         background-size: 100% 100%;
         h1 {
-            text-align: center;
-            transform: translate(0, 60%);
+            text-align: left;
+            vertical-align: middle;
+            transform: translate(0, 110px);
+            padding: 50px;
             
         } 
+    }
+
+    .offer{
+        .item {
+            // border: solid;
+            width: 150px;
+            margin: 10px;
+            text-align: center;
+            .item-props {
+                .product-img{
+                    height: 70px;
+                    width: auto;
+                }
+                .name {
+                    padding: 10px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: $color1;
+                }
+                .price {
+                    padding: 10px;
+                    font-weight: bold;
+                    color: $color1;
+                
+                }
+                .add-to-cart {
+                    display: i
+                }
+            }
+        }
     }
     .cart {
         background-color: $cartBgColor;

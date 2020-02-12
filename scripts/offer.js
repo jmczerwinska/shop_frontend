@@ -9,7 +9,7 @@ class Offer {
     showOffer(allData) {
         for (let i=0; i<allData.length; i++) {
             const id = allData[i]._id;
-            const data = allData[i].data;
+            const data = allData[i];
             this._createItem(id, data);
         }
     }
@@ -30,14 +30,22 @@ class Offer {
     _createItemPropDiv(id, data) {
         const itemPropDiv = document.createElement('div');
         itemPropDiv.className = 'item-props';
-
-        const { name, description, price } = data;
         
+        const { name, description, price, img } = data;
+        console.log(img)
+        this._createImg(id, img, itemPropDiv);
         this._createPropEl(id, 'name', name, 'h5', itemPropDiv);
         this._createPropEl(id,'description', description, 'p', itemPropDiv);
         this._createPropEl(id, 'price', price, 'p', itemPropDiv);
 
         return itemPropDiv;
+    }
+    _createImg (id, property, parent) {
+        const productImg = document.createElement('img');
+        productImg.src = 'http://localhost:3000/static/' + property;
+        productImg.className = 'product-img';
+        productImg.id = 'img' + id;
+        parent.appendChild(productImg);     
     }
     
     _createPropEl(id, propName, property, child, parent) {
