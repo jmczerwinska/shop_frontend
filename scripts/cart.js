@@ -76,7 +76,7 @@ class Cart {
             const rowId = rows[i].id;
             const count = document.querySelector(`#cart-count${CSS.escape(rowId)}`).innerHTML;
             const prodData = {
-                'id': parseInt(rowId),
+                'id': rowId,
                 'count': parseInt(count)
             }
             data.push(prodData);
