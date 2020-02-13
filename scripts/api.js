@@ -3,9 +3,13 @@ import Message from './message.js';
 class Api {
     constructor() {
         this.url = 'http://localhost:3000/api/db/';
-        this.headers = new Headers({
+        this.jsonHeaders = new Headers({
             'Accept': 'application/json',
             'Content-Type': 'application/json'
+        });
+        this.multiHeaders = new Headers({
+            'Accept': 'multipart/form-data',
+            'Content-Type': 'multipart/ form - data'
         });
     }
     
@@ -42,16 +46,16 @@ class Api {
         return fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(data),
-                headers: this.headers
+                headers: this.multiHeaders
             }).then(this._handleResponse);
     }
 
-    _put(path, data) {
+    _put(path, data, headers) {
         const url = this.url + path;
         return fetch(url, {
             method: 'PUT',
             body: JSON.stringify(data),
-            headers: this.headers
+            headers: headers
         }).then(this._handleResponse);
     }
 
@@ -92,14 +96,14 @@ class Api {
     }
     
     updateProduct(id, data) {
-        return this._put(id, data)
+        return this._put(id, data, this.multiHeaders)
             .then(() => new Message('Produkt został zmieniony.'))
             .catch((e) => this._handleError(e));
     }
     
     _buyProduct(id, count) {
         const path = id + '/buy';
-        return this._put(path, count)
+        return this._put(path, count, this.jsonHeaders)
             .catch((e) => this._handleError(e));
     }
     
