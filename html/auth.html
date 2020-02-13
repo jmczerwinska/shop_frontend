@@ -10,21 +10,45 @@
 </head>
 <body>
     <div class="container">
-        <nav>
-            <ul class="menu">
-                <a href="index.html">
-                    <li class="menu-el">Sklep</li>
-                </a>                    
-                <a href="management.html">
-                    <li class="menu-el">Magazyn</li>
+        <nav class="navigation">
+            <ul class="navigation__menu">
+                <a href="./index.html" class="navigation__link">
+                    <li class="navigation__menu-el">Sklep</li>
+                </a>
+                <a href="./management.html" class="navigation__link">
+                    <li class="navigation__menu-el">Magazyn</li>
+                </a>
+            </ul>
+            <ul class="navigation__auth">
+                <a href="./auth.html" class="navigation__link">
+                    <li class="navigation__menu-el before-log">Zaloguj się</li>
+                </a>
+                <a href="#" class="navigation__link after-log">
+                    <li class="navigation__menu-el">
+                        <i class="fas fa-user"></i><span id="user-name"></span>
+                    </li>
+                </a>
+                <a href="#" class="navigation__link after-log">
+                    <li class="navigation__menu-el"><i class="fas fa-sign-out-alt"></i>Wyloguj się</li>
                 </a>
             </ul>
         </nav>
 
-    </div>
+    
     <div class="authorization">
+        <div class="log-in">
+            <h3>Zaloguj się</h3>
+            <form>
+                <label>Login:<input type="text" id="log-login" /></label>
+                <br>
+                <label>Hasło:<input type="password" id="log-pass" /></label>
+                <br>
+                <button>Zaloguj</button>
+            </form>
+            <p>Nie masz jeszcze konta? <a href="#">Zarejestruj się!</a></p>
+        </div>
         <div class="sign-in">
-            <h3>Utwórz konto</h3>
+            <h3>Nie masz jeszcze konta? Zarejetruj się!</h3>
             <form>
                 <label>Login:<input type="text" id="login"/></label>
                 <br>
@@ -32,22 +56,10 @@
                 <br>
                 <label>Hasło:<input type="password" id="pass"/></label>
                 <br>
-                <label>Powtórz hasło:<input type="password" id="repeat-pass"/></label>
-                <br>
-                <label>Imię:<input type="text" id="first-name"/></label>
+                <button>Stwórz konto</button>
             </form>
         </div>
-        <div class="log-in">
-            <h3>Zaloguj się</h3>
-            <form>
-                <label>Login:<input type="text" id="log-login"/></label>
-                <br>
-                <label>Hasło:<input type="password" id="log-pass"/></label>
-                <br>
-                <button>Zaloguj</button>
-            </form>
-            <p>Nie masz jeszcze konta? <a href="#">Zarejestruj się!</a></p>
-        </div>
+       
     </div>
 
 <script type="module" src="../scripts/auth.js"></script>

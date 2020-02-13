@@ -12,26 +12,31 @@
 
 <body>
     <div class="container">
-        <nav>
-            <ul class="menu">
-                <a href="index.html">
-                    <li class="menu-el">Sklep</li>
+
+        <nav class="navigation">
+            <ul class="navigation__menu">
+                <a href="./index.html" class="navigation__link">
+                    <li class="navigation__menu-el">Sklep</li>
                 </a>
-                <a href="#">
-                    <li class="menu-el">Magazyn</li>
+                <a href="./management.html" class="navigation__link">
+                    <li class="navigation__menu-el">Magazyn</li>
                 </a>
             </ul>
-            <ul>
-                <a href="#">
-                    <li class="menu-el">
+            <ul class="navigation__auth">
+                <a href="./auth.html" class="navigation__link">
+                    <li class="navigation__menu-el before-log">Zaloguj się</li>
+                </a>
+                <a href="#" class="navigation__link after-log">
+                    <li class="navigation__menu-el">
                         <i class="fas fa-user"></i><span id="user-name"></span>
                     </li>
                 </a>
-                <a href="#">
-                    <li class="menu-el"><i class="fas fa-sign-out-alt"></i>Wyloguj się</li>
+                <a href="#" class="navigation__link after-log">
+                    <li class="navigation__menu-el"><i class="fas fa-sign-out-alt"></i>Wyloguj się</li>
                 </a>
             </ul>
         </nav>
+
         <div class="management">
             <a id="management">
                 <h2>Zarządzanie produktami</h2>
