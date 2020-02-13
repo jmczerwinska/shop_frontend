@@ -96,14 +96,14 @@ class Api {
     }
     
     updateProduct(id, data) {
-        return this._put(id, data, this.multiHeaders)
+        return this._put(id, data)
             .then(() => new Message('Produkt został zmieniony.'))
             .catch((e) => this._handleError(e));
     }
     
     _buyProduct(id, count) {
         const path = id + '/buy';
-        return this._put(path, count, this.jsonHeaders)
+        return this._put(path, count)
             .catch((e) => this._handleError(e));
     }
     

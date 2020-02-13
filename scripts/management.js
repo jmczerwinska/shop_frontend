@@ -141,24 +141,19 @@ class UpdateProduct extends Storage {
 
         this.updateBtn = document.getElementById('update-btn');
 
-        for (let i = 0; i < this.updateInputs.length; i++) {
-            this.updateInputs[i].addEventListener('change', this._checkUpdateInputs.bind(this));
-        }
+        this.updateId.addEventListener('input', () => this.updateBtn.disabled = this.updateId === '');
+        
         this.updateBtn.addEventListener('click', this._handleChange.bind(this));
-    }
-
-    _checkUpdateInputs() {
-        this.updateBtn.disabled = this.updateInputs.every(el => el === '');
     }
 
     _handleChange() {
         const id = this.updateId.value;
-        const data = {
-            "name": this.updateName.value,
-            "description": this.updateDescription.value,
-            "price": this.updatePrice.value,
-            "count": this.updateCount.value
-        }
+        const data = {};
+        if (this.updateName.value !== '') data.name = this.updateName.value;
+        if (this.updateDescription.value !== '') data.description = this.updateDescription.value;
+        if (this.updatePrice.value !== '') data.price = this.updatePrice.value;
+        if (this.updateCount.value !== '') data.count = this.updateCount.value;
+        console.log(data);
 
         this.api.updateProduct(id, data);  
 
