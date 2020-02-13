@@ -9,7 +9,7 @@ class Storage {
     _createTbBd(allData) {
         for (let i = 0; i < allData.length; i++) {
             const id = allData[i]._id;
-            const data = allData[i].data;
+            const data = allData[i];
             this._createRow(id, data);
         }
     }
@@ -92,35 +92,35 @@ class NewProduct extends Storage {
     constructor() {
         super();
 
-        this.addId = document.getElementById('add-id');
         this.addName = document.getElementById('add-name');
         this.addDescription = document.getElementById('add-descript');
         this.addPrice = document.getElementById('add-price');
         this.addCount = document.getElementById('add-count');
-        this.addInputs = [this.addId, this.addName, this.addDescription, this.addPrice, this.addCount];
+        this.addImg = document.getElementById('add-img');
+        this.addInputs = [this.addName, this.addDescription, this.addPrice, this.addCount, this.addImg];
+
 
         this.addBtn = document.getElementById('add-btn');
 
         for (let i = 0; i < this.addInputs.length; i++) {
-            this.addInputs[i].addEventListener('change', this._checkAddInputs.bind(this));
+            this.addInputs[i].addEventListener('input', this._checkAddInputs.bind(this));
         }
         this.addBtn.addEventListener('click', this._handleAdd.bind(this));
     }
 
     _checkAddInputs() {
-        this.addBtn.disabled = !(this.addInputs.every(el => el !== ''));
+        this.addBtn.disabled = !(this.addInputs.every(el => el.value !== ''));
     }
 
     _handleAdd() {
-        const id = this.addId.value;
-        const data = {
-            "name": this.addName.value,
-            "description": this.addDescription.value,
-            "price": this.addPrice.value,
-            "count": this.addCount.value
-        }
+        const formData = new FormData();
+        formData.append("name", this.addName.value);
+        formData.append("description", this.addDescription.value);
+        formData.append("price", this.addPrice.value);
+        formData.append("count", this.addCount.value);
+        formData.append("img", this.addImg.files[0]);
 
-        this.api.addProduct(id, data);
+        this.api.addProduct(formData);
 
         this.addInputs.forEach(el => el.value = '');
         this.addBtn.disabled = true;
