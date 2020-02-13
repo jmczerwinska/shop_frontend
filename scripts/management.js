@@ -20,7 +20,6 @@ class Storage {
         row.id = 'row' + id;
 
         this._createPropCells(id, data, row);
-        this._addUpdateBtn(id, row);
         this._addDeleteBtn(id, row);
         this.storageTbBd.appendChild(row);
     }
@@ -68,19 +67,6 @@ class Storage {
         const id = e.target.dataset.btnId;
         this.api.deleteProduct(id);
         
-    }
-
-    _addUpdateBtn(id, parent) {
-        const upBtn = document.createElement('button');
-        upBtn.className = 't-btn';
-        upBtn.dataset.btnId = id;
-        upBtn.textContent = 'Aktualizuj';
-        upBtn.addEventListener('click', this._handleUpdateTb.bind(this));
-        parent.appendChild(upBtn);
-    }
-
-    _handleUpdateTb() {
-    
     }
 
     showStorage() {
@@ -151,8 +137,8 @@ class UpdateProduct extends Storage {
         const data = {};
         if (this.updateName.value !== '') data.name = this.updateName.value;
         if (this.updateDescription.value !== '') data.description = this.updateDescription.value;
-        if (this.updatePrice.value !== '') data.price = this.updatePrice.value;
-        if (this.updateCount.value !== '') data.count = this.updateCount.value;
+        if (this.updatePrice.value !== '') data.price = paresInt(this.updatePrice.value);
+        if (this.updateCount.value !== '') data.count = parseInt(this.updateCount.value);
         console.log(data);
 
         this.api.updateProduct(id, data);  

@@ -55,7 +55,7 @@ class Api {
         return fetch(url, {
             method: 'PUT',
             body: JSON.stringify(data),
-            headers: headers
+            headers: this.jsonHeaders
         }).then(this._handleResponse);
     }
 
@@ -96,6 +96,7 @@ class Api {
     }
     
     updateProduct(id, data) {
+        console.log(data)
         return this._put(id, data)
             .then(() => new Message('Produkt został zmieniony.'))
             .catch((e) => this._handleError(e));
