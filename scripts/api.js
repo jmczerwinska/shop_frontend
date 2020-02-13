@@ -7,6 +7,10 @@ class Api {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         });
+        this.multiHeaders = new Headers({
+            'Accept': 'multipart/form-data',
+            'Content-Type': 'multipart/ form - data'
+        });
     }
     
     _handleResponse(response) {
@@ -37,20 +41,21 @@ class Api {
         }
     }
      
-    _post(data) {
-        const url = this.url;
+    _post(path, data) {
+        const url = this.url + path;
         return fetch(url, {
                 method: 'POST',
-                body: data
+                body: JSON.stringify(data),
+                headers: this.multiHeaders
             }).then(this._handleResponse);
     }
 
-    _put(path, data) {
+    _put(path, data, headers) {
         const url = this.url + path;
         return fetch(url, {
             method: 'PUT',
             body: JSON.stringify(data),
-            headers: this.jsonHeaders
+            headers: headers
         }).then(this._handleResponse);
     }
 
@@ -63,14 +68,13 @@ class Api {
     
     _delete(path) {
         const url = this.url + path;
-        console.log(path)
         return fetch(url, {
             method: 'DELETE'
         }).then(this._handleResponse);
     }
 
-    addProduct (data) {
-        return this._post(data)
+    addProduct(id, data) {
+        return this._post(id, data)
             .then(() => new Message('Dodano nowy produkt do magazynu.'))
             .catch((e) => this._handleError(e));
     }
@@ -92,15 +96,14 @@ class Api {
     }
     
     updateProduct(id, data) {
-        return this._put(id, data)
+        return this._put(id, data, this.multiHeaders)
             .then(() => new Message('Produkt został zmieniony.'))
             .catch((e) => this._handleError(e));
     }
     
     _buyProduct(id, count) {
         const path = id + '/buy';
-        
-        return this._put(path, count)
+        return this._put(path, count, this.jsonHeaders)
             .catch((e) => this._handleError(e));
     }
     

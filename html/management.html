@@ -46,15 +46,17 @@
             <div class="add-product">
                 <h4>Dodaj nowy produkt <i class="fas fa-chevron-circle-down"></i></h4>
                 <form>
-                    <label>Nazwa:<input type="text" class="input" id="add-name" /></label>
+                    <label>ID:<input type='number' class="input" id="add-id" placeholder="Id number" /></label>
                     <br>
-                    <label>Opis:<input type="text" class="input" id="add-descript" /></label>
+                    <label>Nazwa:<input type="text" class="input" id="add-name" placeholder="Name" /></label>
                     <br>
-                    <label>Cena:<input type="number" class="input" id="add-price" /></label>
+                    <label>Opis:<input type="text" class="input" id="add-descript" placeholder="Description" /></label>
                     <br>
-                    <label>Ilość:<input type="number" class="input" id="add-count"/></label>
+                    <label>Cena:<input type="number" class="input" id="add-price" placeholder="Price" /></label>
                     <br>
-                    <label>Obraz:<input type="file" accept="image/*" id="add-img" /></label>
+                    <label>Ilość:<input type="number" class="input" id="add-count" placeholder="Count"/></label>
+                    <br>
+                    <label>Obraz:<input type="file" accept="image/*" /></label>
                     <br>
                     <button class="m-btn" id="add-btn" disabled="disabled">Dodaj</button>
                 </form>                
@@ -63,17 +65,18 @@
             <div class="change-product">
                 <h4>Aktualizuj produkt</h4>
                 <form>
-                    <label>ID:<input type='text' class="input" id="update-id" /></label>
+                    <label>ID:<input type='number' class="input" id="update-id" placeholder="Id number" /></label>
                     <br>
-                    <label>Nazwa:<input type="text" class="input" id="update-name" /></label>
+                    <label>Nazwa:<input type="text" class="input" id="update-name" placeholder="Name" /></label>
                     <br>
-                    <label>Opis:<input type="text" class="input" id="update-descript" /></label>
+                    <label>Opis:<input type="text" class="input" id="update-descript" placeholder="Description" /></label>
                     <br>
-                    <label>Cena:<input type="number" class="input" id="update-price" /></label>
+                    <label>Cena:<input type="number" class="input" id="update-price" placeholder="Price" /></label>
                     <br>
-                    <label>Ilość:<input type="number" class="input" id="update-count" /></label>
+                    <label>Ilość:<input type="number" class="input" id="update-count" placeholder="Count" /></label>
                     <br>
-                  
+                    <label>Obraz:<input type="file" accept="image/*" /></label>
+                    <br>
                     <button class="m-btn" id="update-btn" disabled="disabled" type="submit">Aktualizuj</button>
                 </form>                
             </div>
@@ -81,7 +84,7 @@
             <div class="delete-product">
                 <h4>Usuń product</h4>
                 <form>
-                    <label>ID:<input type='text' class="input" id="delete-id" /></label>
+                    <label>ID:<input type='number' class="input" id="delete-id" placeholder="Id number" /></label>
                     <br>
                     <button class="m-btn" id="delete-btn" disabled="disabled" type="submit">Usuń z magazynu</button>
                 </form>
