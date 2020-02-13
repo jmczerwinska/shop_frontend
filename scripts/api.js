@@ -41,12 +41,12 @@ class Api {
         }
     }
      
-    _post(path, data) {
-        const url = this.url + path;
+    _post(data) {
+        const url = this.url;
         return fetch(url, {
                 method: 'POST',
-                body: JSON.stringify(data),
-                headers: this.multiHeaders
+                body: data,
+                // headers: this.multiHeaders
             }).then(this._handleResponse);
     }
 
