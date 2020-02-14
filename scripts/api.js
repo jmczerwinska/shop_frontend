@@ -3,14 +3,6 @@ import Message from './message.js';
 class Api {
     constructor() {
         this.url = 'http://localhost:3000/api/db/';
-        this.jsonHeaders = new Headers({
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        });
-        this.multiHeaders = new Headers({
-            'Accept': 'multipart/form-data',
-            'Content-Type': 'multipart/ form - data'
-        });
     }
     
     _handleResponse(response) {
@@ -46,16 +38,18 @@ class Api {
         return fetch(url, {
                 method: 'POST',
                 body: data,
-                // headers: this.multiHeaders
             }).then(this._handleResponse);
     }
 
-    _put(path, data, headers) {
+    _put(path, data) {
         const url = this.url + path;
         return fetch(url, {
             method: 'PUT',
             body: JSON.stringify(data),
-            headers: this.jsonHeaders
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         }).then(this._handleResponse);
     }
 
@@ -73,8 +67,8 @@ class Api {
         }).then(this._handleResponse);
     }
 
-    addProduct(id, data) {
-        return this._post(id, data)
+    addProduct(data) {
+        return this._post(data)
             .then(() => new Message('Dodano nowy produkt do magazynu.'))
             .catch((e) => this._handleError(e));
     }
