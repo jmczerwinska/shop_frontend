@@ -1,6 +1,5 @@
 import ApiUser from './api_user.js';
 
-console.log('yay')
 class Authentication {
     constructor(){
         this.apiUser = new ApiUser;
@@ -15,7 +14,7 @@ class Authentication {
         this.logBtn = document.getElementById('log-button');
 
         this.logBtn.addEventListener('click', this._handleLog.bind(this));
-        this.signBtn.addEventListener('click', this._handleCreate.bind(this));
+        this.signBtn.addEventListener('click', this._handleCreate.bind(this)    );
     }
 
     _handleCreate() {

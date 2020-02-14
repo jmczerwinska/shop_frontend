@@ -1,4 +1,3 @@
-import Message from './message.js';
 import Api from './api.js'
 
 class Cart {
@@ -19,7 +18,7 @@ class Cart {
         this._getSummaryPrice();
         this.emptyCart.style.display = 'none';
         this.fullCart.style.display = 'block';
-        new Message("Dodano produkt do koszyka.");
+        alert("Dodano produkt do koszyka.");
     }
 
     _createRow(id) {

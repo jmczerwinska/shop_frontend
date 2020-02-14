@@ -1,5 +1,3 @@
-import Message from './message.js';
-
 class Api {
     constructor() {
         this.url = 'http://localhost:3000/api/db/';
@@ -16,19 +14,19 @@ class Api {
         console.log('Error: ' + error);
         switch (error) {
             case 400:
-                new Message(`Błąd ${error} - Twoje zapytanie nie obejmuje wszystkich wymaganych parametrów.`);
+                alert(`Błąd ${error} - Twoje zapytanie nie obejmuje wszystkich wymaganych parametrów.`);
                 break;
             case 401:
-                new Message(`Błąd ${error} -  Brak autoryzacji. Zaloguj się do sklepu.`);
+                alert(`Błąd ${error} -  Brak autoryzacji. Zaloguj się do sklepu.`);
                 break;
             case 403:
-                new Message(`Błąd ${error} - Nie masz uprawnień do modyfikowania zawartości magazynu.`);
+                alert(`Błąd ${error} - Nie masz uprawnień do modyfikowania zawartości magazynu.`);
                 break;
             case 404:
-                new Message(`Błąd ${error} - W magazynie nie ma produktu o podanym id.`);
+                alert(`Błąd ${error} - W magazynie nie ma produktu o podanym id.`);
                 break;
             case 409:
-                new Message(`Błąd ${error} - Nie można dodać produktu. W magazynie istnieje już produkt o takim samym id.`);
+                alert(`Błąd ${error} - Nie można dodać produktu. W magazynie istnieje już produkt o takim samym id.`);
                 break;
         }
     }
@@ -69,7 +67,7 @@ class Api {
 
     addProduct(data) {
         return this._post(data)
-            .then(() => new Message('Dodano nowy produkt do magazynu.'))
+            .then(() => alert('Dodano nowy produkt do magazynu.'))
             .catch((e) => this._handleError(e));
     }
 
@@ -85,14 +83,14 @@ class Api {
     
     deleteProduct(id) {
         return this._delete(id)
-            .then(() => new Message('Usunięto produkt z magazynu.'))
+            .then(() => alert('Usunięto produkt z magazynu.'))
             .catch((e) => this._handleError(e));
     }
     
     updateProduct(id, data) {
         console.log(data)
         return this._put(id, data)
-            .then(() => new Message('Produkt został zmieniony.'))
+            .then(() => alert('Produkt został zmieniony.'))
             .catch((e) => this._handleError(e));
     }
     
@@ -108,7 +106,7 @@ class Api {
             const buyOne = this._buyProduct(productsDataArr[i].id, {"count": productsDataArr[i].count});
             promiseArr.push(buyOne);
         }
-        Promise.all(promiseArr).then(() => new Message('Dziękujemy za dokonanie zakupów w naszym sklepie!'));
+        Promise.all(promiseArr).then(() => alert('Dziękujemy za dokonanie zakupów w naszym sklepie!'));
     }
 }
 

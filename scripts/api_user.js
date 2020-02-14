@@ -1,10 +1,9 @@
-import Message from './message.js';
 import Api from './api.js'
 
 class ApiUser extends Api {
     constructor() {
         super()
-        this.url = 'http://localhost:3000/api/auth/';
+        this.authUrl = 'http://localhost:3000/api/auth/';
     }
 
     createUser(data){
@@ -18,9 +17,11 @@ class ApiUser extends Api {
             }
         })
         .then(this._handleResponse)
-        .then(() => new Message('Konto zostało utworzone'))
+        .then(() => alert('Konto zostało utworzone'))
         .catch((e) => this._handleError(e));
     }
+
+    log
 }
 
 export default ApiUser;

@@ -4,21 +4,6 @@ body {
     margin: 0;
 }
 
-.modal {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid $color1;
-    padding: 50px 100px;
-    background-color: $color7;
-    text-align: center;
-
-    .close-modal-bttn {
-        text-align: center;
-    }
-}
-
 .container {
     display: flex;
     flex-direction: column;
