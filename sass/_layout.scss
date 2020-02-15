@@ -35,18 +35,21 @@ body {
             margin-top: 40px;
             flex-grow: 1;
             display: flex;
+            justify-content: left;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: stretch;
+            align-content: flex-start;
 
             .item {
                 display: flex;
                 flex-direction: column;
                 justify-items: end;
                 padding: 15px;
-                max-width: 220px;
+                width: 220px;
+                margin: 5px;
 
-                .count {
+                .count { 
                     width: 25px;
                 }
             }
@@ -58,7 +61,7 @@ body {
             right: -372px;
             z-index: 99999;
             transition: right 0.5s ease-out 0s;
-            height: 450px;
+            height: 100vh;
 
             &:hover {
                 right: 0;
@@ -78,6 +81,33 @@ body {
                     p{
                         margin-top: 50px;
                     }
+                }
+                .full-cart {
+                    margin-top: 5px;
+                    
+                    .cart-table {
+                        width: 90%;
+                        margin: 20px;
+                        .cart-table-head {
+                            font-weight: bold;
+
+                        }
+                        th, td {
+                            border-bottom: 1px solid $color1;
+                            padding: auto 5px;
+                            width: auto;
+                            height: 30px;
+                            vertical-align: bottom;
+                        }
+                        .cel-name {
+                            font-weight: bold;
+                        }   
+                    }
+                    .summary-price {
+                            text-align: right;
+                            padding: 20px;
+                            font-weight: bold;
+                        }
                 }
             }
 
@@ -101,14 +131,77 @@ body {
     }
 
     .authorization {
-        margin-top: 100px;
-        .sign-in {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: top;
+        margin: 75px 50px 0px 50px;
+        text-align: center;
+        h4 {
+            height: 50px;
+            width: 250px;
+            margin: 0 auto;
+            background-color: $color4;
+            border-radius:  25px;
+        }
+        form {
+            width: 400px;
             display: flex;
             flex-direction: column;
-            margin-top: 100px;
-           
+            margin-top: 20px;
+           label {
+                margin: 10px 50px;
+                input { 
+                float: right;
+                border: solid 0.5px;
+                padding: 5px;
+                }
+            }
+            .a-btn {
+                width: 40%;
+                margin: 20px auto;
+            }
         }
-    
+        
     }
     
+    .management{
+        margin-top: 75px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 75px;
+
+        h4 {
+            width: 300px;
+            i {
+                padding: 0 20px;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin: 0 10px;
+            
+            label {
+                margin: 10px 50px;
+                input { 
+                float: right;
+                }
+            }
+           
+            
+            .m-btn {
+                width: 40%;
+                margin: 20px auto;
+            }
+        }
+
+        .storage {
+
+        }
+    }
 }

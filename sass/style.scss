@@ -42,10 +42,10 @@
     .hero-image {
         background-image: url(../img/bg_img.jpg);
         background-size: 100% 100%;
+        margin-top: 50px;
         h1 {
             text-align: left;
             vertical-align: middle;
-            transform: translate(0, 110px);
             padding: 50px;
             
         } 
@@ -54,10 +54,11 @@
     .offer{
         .item {
             // border: solid;
-            width: 150px;
-            margin: 10px;
+         
             text-align: center;
+            
             .item-props {
+                
                 .product-img{
                     height: 70px;
                     width: auto;
@@ -73,10 +74,7 @@
                     font-weight: bold;
                     color: $color1;
                 
-                }
-                .add-to-cart {
-                    display: i
-                }
+                } 
             }
         }
     }

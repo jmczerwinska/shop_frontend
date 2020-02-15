@@ -38,69 +38,52 @@
         </nav>
 
         <div class="management">
-            <a id="management">
-                <h2>Zarządzanie produktami</h2>
-            </a>
-
-
-            <div class="add-product">
-                <h4>Dodaj nowy produkt <i class="fas fa-chevron-circle-down"></i></h4>
+             <div class="add-product">
+                <h4><i class="fas fa-chevron-circle-down"></i>Dodaj nowy produkt</h4>
                 <form>
                     <label>Nazwa:<input type="text" class="input" id="add-name" /></label>
-                    <br>
                     <label>Opis:<input type="text" class="input" id="add-descript" /></label>
-                    <br>
                     <label>Cena:<input type="number" class="input" id="add-price" /></label>
-                    <br>
                     <label>Ilość:<input type="number" class="input" id="add-count" /></label>
-                    <br>
                     <label>Obraz:<input type="file" accept="image/*" id="add-img" /></label>
-                    <br>
                     <button class="m-btn" id="add-btn" disabled="disabled">Dodaj</button>
                 </form>                
             </div>
 
             <div class="change-product">
-                <h4>Aktualizuj produkt</h4>
+                <h4><i class="fas fa-chevron-circle-down"></i>Aktualizuj produkt</h4>
                 <form>
                     <label>ID:<input type='text' class="input" id="update-id" /></label>
-                    <br>
                     <label>Nazwa:<input type="text" class="input" id="update-name" /></label>
-                    <br>
                     <label>Opis:<input type="text" class="input" id="update-descript" /></label>
-                    <br>
                     <label>Cena:<input type="number" class="input" id="update-price" /></label>
-                    <br>
                     <label>Ilość:<input type="number" class="input" id="update-count" /></label>
-                    <br>
                     <button class="m-btn" id="update-btn" disabled="disabled" type="submit">Aktualizuj</button>
                 </form>                
             </div>
 
             <div class="delete-product">
-                <h4>Usuń product</h4>
+                <h4><i class="fas fa-chevron-circle-down"></i>Usuń product</h4>
                 <form>
-                    <label>ID:<input type='text' class="input" id="delete-id" placeholder="Id number" /></label>
-                    <br>
+                    <label>ID:<input type='text' class="input" id="delete-id" /></label>
                     <button class="m-btn" id="delete-btn" disabled="disabled" type="submit">Usuń z magazynu</button>
                 </form>
             </div>
-
-            <div class="storage"></div>
-                <h4>Produkty w magazynie</h4>
-                <table class="storage-table">
-                    <thead class="storage-table-head">
-                        <tr class="head-row">
-                            <th>ID</th>
-                            <th>Nazwa</th>
-                            <th>Opis</th>
-                            <th>Ilość</th>
-                            <th>Cena</th>
-                        </tr>
-                    </thead>
-                    <tbody class="storage-table-body" ></tbody>
-                </table>
-            </div>
+        </div>
+        <div class="storage"></div>
+            <h4>Produkty w magazynie</h4>
+            <table class="storage-table">
+                <thead class="storage-table-head">
+                    <tr class="head-row">
+                        <th>ID</th>
+                        <th>Nazwa</th>
+                        <th>Opis</th>
+                        <th>Ilość</th>
+                        <th>Cena</th>
+                    </tr>
+                </thead>
+                <tbody class="storage-table-body"></tbody>
+            </table>
         </div>
     </div>
 

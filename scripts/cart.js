@@ -30,7 +30,7 @@ class Cart {
     }
 
     _createCells(id, parent) {
-        const cellNames = ['name', 'count', 'price', 'delete'];
+        const cellNames = ['name', 'count', 'price'];
 
         for (let i=0; i<cellNames.length; i++) {
             const cell = document.createElement('td');
@@ -52,9 +52,7 @@ class Cart {
             case 'cell-count':
                 return cell.textContent = count;
             case 'cell-price':
-                return cell.textContent= price*count;
-            case 'cell-delete':
-                return cell.textContent = '&times';
+                return cell.textContent= price*count + ' zł';
         }
         
     }
@@ -66,7 +64,7 @@ class Cart {
         this.cartTableBd.querySelectorAll('.cell-price').forEach(n => prices.push(n.textContent));
         const sumPrice = prices.map(n =>parseInt(n)).reduce((a, b) => a + b);
            
-        sum.textContent = `Wartość zamówienia ${sumPrice} zł`;
+        sum.textContent = `Wartość zamówienia: ${sumPrice} zł`;
     }
 
     _collectBuyData(rows) {
