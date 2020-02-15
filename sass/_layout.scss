@@ -94,7 +94,7 @@ body {
                         }
                         th, td {
                             border-bottom: 1px solid $color1;
-                            padding: auto 5px;
+                            margin: auto 5px;
                             width: auto;
                             height: 30px;
                             vertical-align: bottom;
@@ -189,7 +189,9 @@ body {
             label {
                 margin: 10px 50px;
                 input { 
-                float: right;
+                    float: right;
+                    border: solid 0.5px;
+                    padding: 5px;
                 }
             }
            
@@ -200,8 +202,33 @@ body {
             }
         }
 
-        .storage {
+        
+    }
 
+    .overflow {
+        overflow-x: scroll;
+    }
+   
+    .storage-table {
+        width: auto;
+        margin: 20px auto;
+        .storage-table-head {
+            font-weight: bold;
+            tr {
+                background-color: $color7;
+            }
+        }
+        th, td {
+            text-align: center;
+            height: auto;
+            padding: 10px 40px;
+            width: auto;
+            vertical-align: middle;;
+            
+        }
+        tr:nth-child(even) {
+            background-color: $color6;
+        
         }
     }
 }
