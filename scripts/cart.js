@@ -3,15 +3,18 @@ import Api from './api.js'
 class Cart {
     constructor() {
         this.cart = document.querySelector('.cart');
-        this.showCartBtn = document.querySelector('#show-cart');
         this.closeCartBtn = document.querySelector('#close-cart');
         this.buyBtn = document.querySelector('#buy-bttn');
         this.cartTableBd = document.querySelector('.cart-table-body');
         this.emptyCart = document.querySelector('.empty-cart');
         this.fullCart = document.querySelector('.full-cart');
+        this.cartIcon = document.querySelector('.cart-panel');
 
+        this.cartIcon.addEventListener('click', () => this.cart.classList.add('clicked'));
+        this.closeCartBtn.addEventListener('click', () => this.cart.classList.remove('clicked'));
         this.api = new Api();
     }
+
 
     addToCart(id) {
         this._createRow(id);
