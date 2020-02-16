@@ -149,16 +149,16 @@ body {
             border-radius:  25px;
         }
         form {
-            width: 250px;
+            margin: 20px auto;
             display: flex;
             flex-direction: column;
-            margin-top: 20px;
            label {
-                margin: 10px 20px;
+                margin: 10px auto;
                 input { 
                 float: right;
                 border: solid 0.5px;
                 padding: 5px;
+                margin-left: 10px;
                 }
             }
             .a-btn {
@@ -190,7 +190,7 @@ body {
             margin: 0 10px;
             
             label {
-                margin: 10px 50px;
+                margin: 10px auto;
                 padding: 5px;
                 input { 
                     float: right;
