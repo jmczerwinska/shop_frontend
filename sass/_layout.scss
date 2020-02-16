@@ -175,7 +175,7 @@ body {
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
-        margin-bottom: 75px;
+        margin-bottom: 30px;
 
         h4 {
             width: 300px;
@@ -187,17 +187,16 @@ body {
         form {
             display: flex;
             flex-direction: column;
-            margin: 0 10px;
+            margin: 20px auto; 
             
             label {
-                margin: 10px auto;
-                padding: 5px;
+                margin: 10px 50px;
                 input { 
-                    float: right;
-                    border: solid 0.5px;
-                    padding: 5px;
-                    margin-left: 10px;
-                    width: 200px;
+                float: right;
+                border: solid 0.5px;
+                padding: 5px;
+                margin-left: 10px;
+                width: 200px;
                 }
             }
            
