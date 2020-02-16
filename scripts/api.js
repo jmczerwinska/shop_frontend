@@ -10,23 +10,23 @@ class Api {
         return response.json();
     }
     
-    _handleError(error) {
+    _handleError(error, target) {
         console.log('Error: ' + error);
         switch (error) {
             case 400:
                 alert(`Błąd ${error} - Twoje zapytanie nie obejmuje wszystkich wymaganych parametrów.`);
                 break;
             case 401:
-                alert(`Błąd ${error} -  Brak autoryzacji. Zaloguj się do sklepu.`);
+                alert(`Błąd ${error} -  Brak autoryzacji.`);
                 break;
             case 403:
-                alert(`Błąd ${error} - Nie masz uprawnień do modyfikowania zawartości magazynu.`);
+                alert(`Błąd ${error} - Brak uprawnień.`);
                 break;
             case 404:
-                alert(`Błąd ${error} - W magazynie nie ma produktu o podanym id.`);
+                alert(`Błąd ${error} - W bazie danych nie ma ${target}u o podanym id.`);
                 break;
             case 409:
-                alert(`Błąd ${error} - Nie można dodać produktu. W magazynie istnieje już produkt o takim samym id.`);
+                alert(`Błąd ${error} - Nie można dodać ${target}u. Istnieje już ${target} o takich samych parametrach.`);
                 break;
         }
     }
@@ -68,36 +68,36 @@ class Api {
     addProduct(data) {
         return this._post(data)
             .then(() => alert('Dodano nowy produkt do magazynu.'))
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'produkt'));
     }
 
     getProduct(id) {
         return this._get(id)
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'produkt'));
     }
     
     getAll() {
         return this._get('')
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'product'));
     }
     
     deleteProduct(id) {
         return this._delete(id)
             .then(() => alert('Usunięto produkt z magazynu.'))
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'produkt'));
     }
     
     updateProduct(id, data) {
         console.log(data)
         return this._put(id, data)
             .then(() => alert('Produkt został zmieniony.'))
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'produkt'));
     }
     
     _buyProduct(id, count) {
         const path = id + '/buy';
         return this._put(path, count)
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'produkt'));
     }
     
     buyAllProducts(productsDataArr) {

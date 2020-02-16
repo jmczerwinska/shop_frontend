@@ -18,7 +18,7 @@ class ApiUser extends Api {
         })
         .then(this._handleResponse)
         .then(() => alert('Konto zostało utworzone'))
-        .catch((e) => this._handleError(e));
+        .catch((e) => this._handleError(e, 'użytkownik'));
     }
 
     logUser (data){
@@ -33,7 +33,7 @@ class ApiUser extends Api {
         })
             .then(this._handleResponse)
             .then((res) => alert('Witaj ' + res.login + '!'))
-            .catch((e) => this._handleError(e));
+            .catch((e) => this._handleError(e, 'użytkownik'));
     }
 }
 
