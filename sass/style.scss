@@ -76,6 +76,7 @@
         background-color: $cartBgColor;
         .cart-panel {
             color: $cartIcon;
+            cursor: pointer;
         }
         .cart-content{
             h2 {
