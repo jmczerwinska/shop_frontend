@@ -7,7 +7,7 @@ class ApiUser extends Api {
     }
 
     createUser(data){
-        const path = this.url + 'create';
+        const path = this.authUrl + 'create';
         return fetch(path, {
             method: 'POST',
             body: JSON.stringify(data),
@@ -21,7 +21,20 @@ class ApiUser extends Api {
         .catch((e) => this._handleError(e));
     }
 
-    log
+    logUser (data){
+        const path = this.authUrl + 'login';
+        return fetch(path, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(this._handleResponse)
+            .then((res) => alert('Witaj ' + res.login + '!'))
+            .catch((e) => this._handleError(e));
+    }
 }
 
 export default ApiUser;

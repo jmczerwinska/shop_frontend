@@ -28,7 +28,12 @@ class Authentication {
     }
 
     _handleLog() {
-
+        const data = {
+            login: this.logLogin.value,
+            password: this.logPassword.value
+        }
+        console.log(data);
+        this.apiUser.logUser(data);
     }
 }
 
