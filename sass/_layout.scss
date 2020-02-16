@@ -35,7 +35,7 @@ body {
             margin-top: 40px;
             flex-grow: 1;
             display: flex;
-            justify-content: left;
+            justify-content: space-around;
             flex-direction: row;
             flex-wrap: wrap;
             align-items: stretch;
@@ -191,10 +191,13 @@ body {
             
             label {
                 margin: 10px 50px;
+                padding: 5px;
                 input { 
                     float: right;
                     border: solid 0.5px;
                     padding: 5px;
+                    margin-left: 10px;
+                    width: 200px;
                 }
             }
            
