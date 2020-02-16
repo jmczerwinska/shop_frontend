@@ -45,8 +45,8 @@ body {
                 display: flex;
                 flex-direction: column;
                 justify-items: end;
-                padding: 15px;
-                width: 220px;
+                padding: 10px;
+                width: 150px ;
                 margin: 5px;
 
                 .count { 
@@ -149,12 +149,12 @@ body {
             border-radius:  25px;
         }
         form {
-            width: 400px;
+            width: 250px;
             display: flex;
             flex-direction: column;
             margin-top: 20px;
            label {
-                margin: 10px 50px;
+                margin: 10px 20px;
                 input { 
                 float: right;
                 border: solid 0.5px;

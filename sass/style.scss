@@ -17,25 +17,21 @@
             padding: 5px;
                 
             .navigation__menu-el {
-                
-        
-            &:hover{
-                border-bottom: solid 5px $color6;   
-            }
-            &:focus {
-                border-bottom: solid 5px $color6;   
-            }
-            &:active {
-                color: $menuActive;
-            }
-
-                
-            }
-
-        
+                &:hover{
+                    border-bottom: solid 5px $color6;   
+                }
+                &:focus {
+                    border-bottom: solid 5px $color6;   
+                }
+                &:active {
+                    color: $menuActive;
+                }            
+            }    
+        }
         .after-log {
             display: none;
         }
+        
     }
     .hero-image {
         background-image: url(../img/bg_img.jpg);
