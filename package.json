@@ -9,7 +9,9 @@
   "author": "Joanna Czerwińska <czerwinska.jm@gmail.com>",
   "repository": "github:jmczerwinska/shop_frontend",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "minimist": ">=1.2.2"
+  },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
     "@babel/core": "^7.7.5",

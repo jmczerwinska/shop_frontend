@@ -172,7 +172,6 @@ class DeleteProduct extends Storage {
         this.deleteId.value = '';
         this.deleteBtn.disabled = true;
         
-    }
 }
 
 const storage = new Storage();
