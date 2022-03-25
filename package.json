@@ -10,7 +10,7 @@
   "repository": "github:jmczerwinska/shop_frontend",
   "license": "ISC",
   "dependencies": {
-    "minimist": ">=1.2.2"
+    "minimist": ">=1.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.5",
